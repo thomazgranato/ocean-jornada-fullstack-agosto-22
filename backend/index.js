@@ -61,7 +61,7 @@ async function main() {
   // Endpoint READ ALL - [GET] /pontuacoes
   app.get("/pontuacoes", async function (req, res) {
     const itens = await collection
-      .find()
+      .find({pontos: {$exists: true}})
       .sort({ pontos: -1 })
       .limit(10)
       .toArray();
